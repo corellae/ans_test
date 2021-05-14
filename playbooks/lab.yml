@@ -5,7 +5,7 @@
   tasks:
 
   - name: Install package
-    yum: name=httpd state=absent
+    yum: name=nginx state=latest
     register: result
 #    until: '"failed" not in result'
     retries: 2
