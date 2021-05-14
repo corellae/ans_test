@@ -1,0 +1,12 @@
+---
+- name: Display installed packages
+  hosts: docker
+  tasks:
+    - name: Gather info on installed packages
+      package_facts:
+        manager: auto
+
+    - name: Display docker packages versions
+      debug:
+        msg: "{{ ansible_facts.packages['docker-ce'][0].name}} version installed is: {{ansible_facts.packages['docker-ce'][0].version}}"
+

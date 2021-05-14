@@ -1,0 +1,13 @@
+---
+- name: Install some test packages
+  become: yes
+  hosts: worker3
+  tasks:
+
+  - name: Install package
+    yum: name=httpd state=absent
+    register: result
+#    until: '"failed" not in result'
+    retries: 2
+    delay: 5
+    failed_when: false

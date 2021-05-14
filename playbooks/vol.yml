@@ -1,0 +1,16 @@
+---
+
+- name: Check pip module and create volume
+  hosts: docker
+  gather_facts: false
+  tasks:
+
+     - name: Install pip module
+       pip:
+         name: docker
+         virtualenv: /home/cloud_user/.venv
+
+     - name: Create volume
+       docker_volume:
+         name: test_volume
+         state: absent

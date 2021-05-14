@@ -1,0 +1,14 @@
+---
+- name: Testing Ansible
+  hosts: docker
+  become: yes
+
+  tasks:
+    - name: Create directories
+      file:
+        path: '/Sandbox/{{ item  }}'
+        state: directory
+      with_items:
+        - lab
+        - test
+        - prod

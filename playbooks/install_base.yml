@@ -1,0 +1,13 @@
+---
+- name: Install base using role
+  hosts: docker
+  become: yes
+
+  roles:
+    - base
+  
+  post_tasks:
+    - name: Copy motd file
+      file:
+        path: /etc/motd
+        state: absent

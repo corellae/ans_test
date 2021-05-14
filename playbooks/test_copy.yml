@@ -1,0 +1,31 @@
+---
+- name: Testing Ansible
+  hosts: docker
+  become: yes
+
+  tasks:
+    - name: Copy file
+      copy:
+        src: "{{ item }}"
+        dest: /Sandbox/lab
+      with_first_found:
+        - "../a"
+        - "../b"
+        - "../c"
+
+    - name: Show some facts
+      debug:
+        msg: Ansible distribution = {{ ansible_distribution }} 
+
+    - name: Show some fact
+      debug:
+        msg: Ansible distribution major version = {{ ansible_distribution_major_version }}
+
+    - name: Show some fact
+      debug:
+        msg: Ansible distribution version = {{ ansible_distribution_version }}
+
+    - name: Show some fact
+      debug:
+        msg: Ansible os family = {{ ansible_os_family }}
+

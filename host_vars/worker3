@@ -1,0 +1,3 @@
+---
+ansible_host: 65f3e0c9321c.mylabserver.com
+role: WORKER

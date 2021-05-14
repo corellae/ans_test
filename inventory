@@ -1,0 +1,9 @@
+[workers]
+worker[1:3]
+
+[docker]
+manager
+worker[1:3]
+
+[jenkins]
+manager

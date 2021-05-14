@@ -1,0 +1,28 @@
+---
+- name: Jenkins Installation
+  hosts: jenkins
+  become: yes
+
+  tasks:
+  - name: Add Repository
+    yum_repository:
+      file: jenkins
+      name: jenkins
+      description: Jenkins-stable
+      baseurl: http://pkg.jenkins.io/redhat-stable
+      gpgcheck: yes
+
+  - name: Import Key
+    rpm_key:
+      state: present
+      key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+  - name: Install packages
+    yum:
+      name: "{{ packages }}"
+      state: latest
+    vars:
+      packages:
+        - jenkins
+        - java-1.8.0-openjdk-devel
+

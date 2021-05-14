@@ -1,0 +1,5 @@
+---
+# defaults file for base
+pkg1: sysstat
+pkg2: lsof
+pkg3: nmap-ncat

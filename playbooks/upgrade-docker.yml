@@ -1,0 +1,16 @@
+---
+- name: Upgrade Docker Engine to latest version
+  hosts: docker
+  become: yes
+  gather_facts: no
+  tasks:
+
+  - name: Upgrade Docker packages
+    yum:
+      name: "{{ packages }}"
+      state: latest
+    vars:
+      packages:
+      - docker-ce
+      - docker-ce-cli
+

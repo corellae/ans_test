@@ -1,0 +1,25 @@
+---
+# tasks file for base
+
+- name: Install base packages
+  yum:
+    name:
+      - "{{ pkg1 }}"
+      - "{{ pkg2 }}"
+      - "{{ pkg3 }}"
+    state: latest
+
+- name: Include .bash_profile_local script
+  blockinfile:
+    path: /home/cloud_user/.bashrc
+    block: |
+      # Load new script file
+      if [ -f ~/.bash_profile_local ]; then
+        source ~/.bash_profile_local
+      fi
+    state: absent
+
+- name: Remove new script file
+  file:
+    path: /home/cloud_user/.bash_profile_local
+    state: absent

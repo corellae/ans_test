@@ -1,0 +1,59 @@
+---
+- name: Onboard servers to Docker Swarm
+  hosts: docker
+  become: yes
+
+  tasks:
+  - name: Install required packages
+    yum:
+      name: "{{ packages }}"
+      state: latest
+    vars:
+      packages:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+
+  - name: Add Docker repository (1/2)
+    yum_repository:
+      file: docker-ce
+      name: docker-ce-stable
+      description: Docker CE Stable - $basearch
+      baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+      enabled: yes
+      gpgcheck: yes
+      gpgkey: https://download.docker.com/linux/centos/gpg
+
+  - name: Add Docker repository (2/2)
+    yum_repository:
+      file: docker-ce
+      name: docker-ce-edge
+      description: Docker CE Edge - $basearch
+      baseurl: https://download.docker.com/linux/centos/7/$basearch/edge
+      enabled: yes
+      gpgcheck: yes
+      gpgkey: https://download.docker.com/linux/centos/gpg
+
+  - name: Install Docker Package
+    yum:
+      name: docker-ce
+      state: latest
+
+  - name: Enable Docker service
+    service:
+      name: docker
+      enabled: yes
+      state: started
+
+  - name: Add cloud_user to Docker group
+    user:
+      name: cloud_user
+      groups: docker
+      append: yes
+
+#  - name: Add node to Swarm
+#    docker_swarm:
+#      state: join
+#      advertise_addr: 172.31.104.213
+#      join_token: SWMTKN-1-1crs4cd5bxb1cxypvnrefz3mkrd1ky6qq41e6lg3z7flm5ukb7-dzcvxfr4idrnlsezun7pzlg67
+#      remote_addrs: [ '172.31.104.103:2377' ]
