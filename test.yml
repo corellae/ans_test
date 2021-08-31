@@ -5,9 +5,5 @@
   tasks:
 
   - name: Install package
-    yum: name=httpd state=latest
-    register: result
-#   until: '"failed" not in result'
-    retries: 2
-    delay: 5
-    failed_when: false
+    debug:
+      msg: "Test from Github"
