@@ -1,6 +1,5 @@
 ---
 - name: Install some test packages
-  become: yes
   hosts: worker3
   tasks:
 
