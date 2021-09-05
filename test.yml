@@ -2,7 +2,6 @@
 - name: Install some test packages
   hosts: worker3
   become: true
-  remote_user: build
   tasks:
 
   - name: Install package
