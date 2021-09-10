@@ -6,7 +6,6 @@ node("master") {
         println "$name"
     }
     stage('Running Groovy') {
-        numbers
+        numbers()
         }
-    }
 }
