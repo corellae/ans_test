@@ -1,9 +1,9 @@
 ---
 - name: Install some test packages
   hosts: worker3
-  become: true
   tasks:
 
   - name: Install package
-    debug:
-      msg: "Test from {{ place }}"
+    yum:
+      name: httpd
+      state: latest
