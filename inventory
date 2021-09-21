@@ -1,2 +1,5 @@
 [test]
-worker3
+74c2f0ec021c.mylabserver.com ansible_python_interpreter="/usr/bin/python2"
+
+[test_servers:children]
+test
