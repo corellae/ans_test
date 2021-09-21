@@ -1,6 +1,6 @@
 ---
 - name: Install some test packages
-  hosts: worker3
+  hosts: test
   tasks:
 
   - name: Install package
