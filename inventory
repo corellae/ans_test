@@ -1,5 +1,5 @@
 [test]
-74c2f0ec021c.mylabserver.com ansible_python_interpreter="/usr/bin/python2"
+74c2f0ec021c.mylabserver.com
 
 [test_servers:children]
 test
