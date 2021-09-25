@@ -5,6 +5,10 @@
   tasks:
 
   - name: Install package
-    yum:
-      name: httpd
+    dnf:
+      name:
+        - httpd
+        - https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+        - screen
+        - sysstat
       state: latest
