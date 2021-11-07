@@ -5,5 +5,6 @@ node("worker1") {
     }
     stage('Running Groovy') {
         numbers()
+        numbers()
         }
 }
