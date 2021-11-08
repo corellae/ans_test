@@ -6,5 +6,6 @@ node("worker1") {
     stage('Running Groovy') {
         numbers()
         numbers()
+        println 'now this should run in worker1'
         }
 }
